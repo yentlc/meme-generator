@@ -40,9 +40,10 @@ main{
 }
 .form{
   display: grid;
-  grid-template: 1fr 1fr / 1fr 1fr;
+  grid-template: 70px 70px 10fr/ 1fr 1fr ;
   grid-template-areas: "input1 input2"
-                        "button button";
+                        "button button"
+                        "image image";
   width: 60%;
   grid-gap: 30px;
 }
@@ -68,5 +69,13 @@ button{
   font-family: "Fredoka";
   padding: 15px;
   border-radius: 15px;
+}
+.meme-image{
+  grid-area: image;
+  width: 92%;
+  object-fit:cover;
+  height: auto;
+  justify-self: center;
+  align-self: center;
 }
 
