@@ -5,9 +5,16 @@ export default function Form() {
   function getImage() {
     let memeArr = DataMeme.data.memes;
     let url = memeArr[Math.floor(Math.random() * (memeArr.length - 1))].url;
-    memeState(url);
+    setMeme((prevMeme) => ({
+      ...prevMeme,
+      randomImage: url,
+    }));
   }
-  const [memeImage, memeState] = useState('');
+  const [meme, setMeme] = useState({
+    topText: '',
+    bottomText: '',
+    randomImage: 'https://i.imgflip.com/9ehk.jpg',
+  });
 
   return (
     <main>
@@ -21,7 +28,7 @@ export default function Form() {
         <button type='button' onClick={getImage}>
           Get a new meme image <i className='fa-solid fa-image'></i>
         </button>
-        <img src={memeImage} className='meme-image' />
+        <img src={meme.randomImage} className='meme-image' />
       </form>
     </main>
   );

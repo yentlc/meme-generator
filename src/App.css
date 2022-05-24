@@ -72,10 +72,10 @@ button{
 }
 .meme-image{
   grid-area: image;
-  width: 92%;
+  width: 99%;
   object-fit:cover;
   height: auto;
   justify-self: center;
-  align-self: center;
+  border-radius: 10px;
 }
 
