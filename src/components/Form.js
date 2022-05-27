@@ -27,7 +27,6 @@ export default function Form() {
       [name]: value,
     }));
   }
-
   return (
     <main>
       <form className='form'>
@@ -37,6 +36,7 @@ export default function Form() {
           placeholder='Up text'
           name='topText'
           value={meme.topText}
+          onChange={handleChange}
         />
         <input
           type='text'
@@ -44,11 +44,16 @@ export default function Form() {
           placeholder='Bottom text'
           name='bottomText'
           value={meme.bottomText}
+          onChange={handleChange}
         />
         <button type='button' onClick={getImage}>
           Get a new meme image <i className='fa-solid fa-image'></i>
         </button>
-        <img src={meme.randomImage} className='meme-image' />
+        <div className='meme'>
+          <img src={meme.randomImage} className='meme-image' alt='meme' />
+          <h2 className='topText'>{meme.topText}</h2>
+          <h2 className='bottomText'>{meme.bottomText}</h2>
+        </div>
       </form>
     </main>
   );
