@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import DataMeme from '../DataMeme';
+import { useState, useEffect } from 'react';
 
 export default function Form() {
   //state meme object
@@ -9,9 +8,21 @@ export default function Form() {
     randomImage: 'https://i.imgflip.com/9ehk.jpg',
   });
 
+  //SAVE DATA FROM API IN A STATE VAR
+  const [allMemes, setAllMemes] = useState({});
+
+  //CALL TO API :
+  // solo se corre una vez para descargar los memes y guardar los datos en "allMemes"
+  useEffect(() => {
+    fetch('https://api.imgflip.com/get_memes')
+      .then((rsp) => rsp.json())
+      .then((data) => setAllMemes(data));
+    console.log('got the data');
+  }, []);
+
   //MEME IMAGE
   function getImage() {
-    let memeArr = DataMeme.data.memes;
+    let memeArr = allMemes.data.memes; // cambie "dataMeme" por "allMemes" - para usar la data llamada directamente dsd la API
     let url = memeArr[Math.floor(Math.random() * (memeArr.length - 1))].url;
     setMeme((prevMeme) => ({
       ...prevMeme,
